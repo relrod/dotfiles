@@ -23,3 +23,13 @@ URxvt*urlLauncher:         firefox3
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
 URxvt*scrollColor:         #000000
+URxvt*scrollTtyOutput:     false
+URxvt*scrollWithBuffer:    true
+URxvt*TtyKeypress:         true
+URxvt*saveLines:           5500
+URxvt*colorBD:             lightyellow
+URxvt*colorUL:             yellow
+URxvt.perl-ext:            default,matcher
+URxvt.urlLauncher:         firefox3
+URxvt.matcher.button:      1
+URxvt.urgentOnBell:        true
