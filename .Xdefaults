@@ -1,7 +1,7 @@
 *background:                #111111
 *foreground:                #777777
 
-*color0:                    #999999
+*color0:                    #444444
 *color8:                    #999999
 *color1:                    #9f6767
 *color9:                    #9f6767
@@ -30,6 +30,5 @@ URxvt*saveLines:           5500
 URxvt*colorBD:             lightyellow
 URxvt*colorUL:             yellow
 URxvt.perl-ext:            default,matcher
-URxvt.urlLauncher:         firefox3
 URxvt.matcher.button:      1
 URxvt.urgentOnBell:        true
