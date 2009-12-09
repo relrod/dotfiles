@@ -1,32 +1,39 @@
 #URxvt*depth: 32
 #URxvt*background: rgba:0000/0000/0000/eeee
-URxvt*transparent: true
-URxvt*tintColor: #000000
-URxvt*shading: 13
+#URxvt*transparent: true
+#URxvt*tintColor: #000000
+#URxvt*shading: 13
 
-*background:                #111111
-*foreground:                #777777
-*color0:                    #444444
-*color8:                    #999999
-*color1:                    #9f6767
-*color9:                    #9f6767
-*color2:                    #92ac68
-*color10:                   #92ac68
-*color3:                    #d0d293
-*color11:                   #d0d293
-*color4:                    #9aacc3
-*color12:                   #9aacc3
-*color5:                    #bb77a4
-*color13:                   #bb77a4
-*color6:                    #77bbb5
-*color14:                   #77bbb5
-*color7:                    #777777
-*color15:                   #777777
+*foreground: #DDEEDD
+*background: #111111
 
-#URxvt*font:                xft:terminus:size=8
+
 URxvt*font:                xft:Liberation Mono:pixelsize=11
-#URxvt*font:                xft:Inconsolata-9
 
+!black
+*color0: #1C1C1C
+*color8: #4d4d4d
+!red
+*color1: #D81860
+*color9: #F00060
+!green
+*color2: #B7CE42
+*color10: #BDE077
+!yellow
+*color3: #FEA63C
+*color11: #FFE863
+!blue
+*color4: #66AABB
+*color12: #AACCBB
+!magenta
+*color5: #B7416E
+*color13: #BB4466
+!cyan
+*color6: #5E7175
+*color14: #A3BABF
+!white
+*color7: #DDEEDD
+*color15: #6C887A
 
 
 URxvt*urlLauncher:         firefox3
