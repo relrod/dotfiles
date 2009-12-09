@@ -1,6 +1,11 @@
+#URxvt*depth: 32
+#URxvt*background: rgba:0000/0000/0000/eeee
+URxvt*transparent: true
+URxvt*tintColor: #000000
+URxvt*shading: 13
+
 *background:                #111111
 *foreground:                #777777
-
 *color0:                    #444444
 *color8:                    #999999
 *color1:                    #9f6767
@@ -18,7 +23,12 @@
 *color7:                    #777777
 *color15:                   #777777
 
-URxvt*font:                xft:terminus:size=8
+#URxvt*font:                xft:terminus:size=8
+URxvt*font:                xft:Liberation Mono:pixelsize=11
+#URxvt*font:                xft:Inconsolata-9
+
+
+
 URxvt*urlLauncher:         firefox3
 URxvt*scrollBar:           false
 URxvt*scrollBar_right:     true
