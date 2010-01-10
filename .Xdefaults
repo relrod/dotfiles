@@ -5,10 +5,22 @@
 #URxvt*shading: 13
 
 *foreground: #DDEEDD
-*background: #111111
+*background: #151515
 
 
-URxvt*font:                xft:Liberation Mono:pixelsize=11
+URxvt*font:                xft:Droid Sans Mono Custom:pixelsize=11:antialias=true, \
+                           xft:DejaVu Sans Mono:pixelsize=11:antialias=true
+
+#URxvt*font:                xft:Monaco:pixelsize=11:antialias=true
+
+#urxvt*font: xft:Inconsolata-10, \
+#            xft:DejaVu Sans Mono-10
+#urxvt*boldFont: xft:Inconsolata-10, \
+#                xft:DejaVu Sans Mono-10
+#urxvt*boldItalicFont: xft:Inconsolata-10:italic, \
+#                      xft:DejaVu Sans Mono-10:italic
+
+
 
 !black
 *color0: #4d4d4d
