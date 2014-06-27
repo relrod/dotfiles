@@ -14,9 +14,9 @@ function peoplepackage {
     echo -n "Review Request: $1 - "
       rpmspec "$1"*".spec" -q --queryformat '%{summary}\n' | head -1
     echo "---"
-    echo -n "Spec URL: http://codeblock.fedorapeople.org/packages/$1/"
+    echo -n "Spec URL: http://$FAS_USERNAME/packages/$1/"
       echo "$1"*".spec"
-    echo -n "SRPM URL: http://codeblock.fedorapeople.org/packages/$1/"
+    echo -n "SRPM URL: http://$FAS_USERNAME/packages/$1/"
       echo "$1"*".src.rpm"
     echo "Description: "
     rpmspec "$1"*".spec" -q --queryformat '%{description}\n' | sed -e '/./!Q'
