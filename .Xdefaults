@@ -1,5 +1,5 @@
 URxvt*background: #111111
-URxvt*boldFont: xft:Fira Mono OT:bold:pixelsize=11
+URxvt*boldFont: xft:Fira Mono OT:bold:pixelsize=11, xft:DejaVu Sans Mono:pixelsize=11
 URxvt*color0: #2E3436
 URxvt*color10: #8AE234
 URxvt*color11: #FCE94F
@@ -19,7 +19,7 @@ URxvt*color9: #EF2929
 URxvt*colorUL: #86a2b0
 URxvt*cursorBlink: true
 URxvt*cursorUnderline: true
-URxvt*font: xft:Fira Mono OT:pixelsize=11
+URxvt*font: xft:Fira Mono OT:pixelsize=11,xft:DejaVu Sans Mono:pixelsize=11
 URxvt*foreground: #DEDEDE
 URxvt*keysym.C-Delete: perl:matcher:last
 URxvt*keysym.End: \033[4~
@@ -27,12 +27,14 @@ URxvt*keysym.Home: \033[1~
 URxvt*keysym.M-Delete: perl:matcher:list
 URxvt*keysym.M-u: perl:url-select:select_next
 URxvt*matcher.button: 1
-URxvt*perl-ext-common: default,matcher
+URxvt*perl-ext-common: default,matcher,font-size
 URxvt*saveLines: 12000
 URxvt*scrollBar: false
 URxvt*scrollstyle: plain
 URxvt*url-launcher: firefox
 URxvt*url-select.underline: true
 URxvt*termName:  xterm-color
+URxvt*keysym.C-plus:     perl:font-size:increase
+URxvt*keysym.C-minus:   perl:font-size:decrease
 
 Xcursor.theme: Vanilla-DMZ-AA
