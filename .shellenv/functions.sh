@@ -1,7 +1,7 @@
 # Misc functions
 
 function pushj {
-  pushd `j -b "$1"`
+  pushd "$(j -b "$1")"
 }
 
 function upload {
@@ -19,4 +19,56 @@ function upload {
 
 function parse_git_branch {
   command git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+function ghpages-init {
+    if [ "$1" == "" ]; then
+        echo "Usage: ghpages-init \$1"
+        return 1
+    fi
+    dir="$(mktemp -d)"
+    git clone "$1" "$dir/repo"
+    pushd "$dir/repo"
+    git ls-remote | grep gh-pages
+    if [ $? == 0 ]; then
+        echo "gh-pages exists already. Aborting!"
+        popd
+        rm -rf "$dir"
+        return 1
+    else
+        git checkout --orphan gh-pages
+        git rm -rf .
+        echo "hello!" > index.html
+        git add index.html
+        git commit -m 'Initialize gh-pages'
+        git push origin gh-pages
+        popd
+        rm -rf "$dir"
+    fi
+}
+
+# This lets us do multiple invocations of some single command with different
+# arugments. For example, `cabal` has no way to combine commands, e.g.
+# `cabal clean build`. You end up needing to do `cabal clean && cabal build`.
+function s {
+  cmd="$1"
+  subcmds="${@:2}"
+  for i in $subcmds; do
+    $1 $i
+    if [ $? != 0 ]; then
+      break
+    else
+      continue
+    fi
+  done
+}
+
+# This does the same thing as `s` above, except it doesn't bail out if one of
+# the commands fails.
+function s {
+  cmd="$1"
+  subcmds="${@:2}"
+  for i in $subcmds; do
+    $1 $i
+  done
 }

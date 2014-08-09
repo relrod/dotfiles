@@ -31,12 +31,12 @@ function peoplepackage {
 }
 
 function unmonpkgs {
-  f=`mktemp`
-  curl -so $f "https://fedoraproject.org/wiki/Upstream_release_monitoring"
-  for i in `pkgdb-cli list --user "$FAS_USERNAME" | head -n -1 | awk "{print \\\$1}"`; do
-    grep "\* $i " $f >/dev/null || echo "Not found: $i"
+  f="$(mktemp)"
+  curl -so "$f" "https://fedoraproject.org/wiki/Upstream_release_monitoring"
+  for i in $(pkgdb-cli list --user "$FAS_USERNAME" | head -n -1 | awk "{print \\\$1}"); do
+    grep "\* $i " "$f" >/dev/null || echo "Not found: $i"
   done
-  rm $f
+  rm "$f"
 }
 
 function unmonpkgs_slow {
@@ -82,5 +82,5 @@ function import-from-url {
 }
 
 function rpmwhich {
-  rpm -qf "$(which $1)"
+  rpm -qf "$(which "$1")"
 }

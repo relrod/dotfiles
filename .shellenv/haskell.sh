@@ -1,6 +1,6 @@
 # Haskell
 function hackagedl {
-  f="$(curl -sq https://hackage.haskell.org/package/$1 | sed -n '/.*strong/{s/.*<strong[^<]*>\([^<]*\)<.*/\1/;p;q}')"
+  f="$(curl -sq https://hackage.haskell.org/package/"$1" | sed -n '/.*strong/{s/.*<strong[^<]*>\([^<]*\)<.*/\1/;p;q}')"
   if [ "$f" == "" ]; then
     echo "That package doesn't seem to exist, or something went wrong."
     return 1
