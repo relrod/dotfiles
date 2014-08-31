@@ -27,7 +27,7 @@ function ghpages-init {
         return 1
     fi
     dir="$(mktemp -d)"
-    git clone "$1" "$dir/repo"
+    git clone "ssh://github.com:$1" "$dir/repo"
     pushd "$dir/repo"
     git ls-remote | grep gh-pages
     if [ $? == 0 ]; then
@@ -51,24 +51,34 @@ function ghpages-init {
 # arugments. For example, `cabal` has no way to combine commands, e.g.
 # `cabal clean build`. You end up needing to do `cabal clean && cabal build`.
 function s {
-  cmd="$1"
-  subcmds="${@:2}"
-  for i in $subcmds; do
-    $1 $i
-    if [ $? != 0 ]; then
-      break
+  cmd=""
+  ran=0
+  for i in "$@"; do
+    if [ $ran -eq 0 ]; then
+      ran=1
+      cmd="$i"
     else
-      continue
+      $1 $i
+      if [ $? != 0 ]; then
+        break
+      else
+        continue
+      fi
     fi
   done
 }
 
 # This does the same thing as `s` above, except it doesn't bail out if one of
 # the commands fails.
-function s {
-  cmd="$1"
-  subcmds="${@:2}"
-  for i in $subcmds; do
-    $1 $i
+function ss {
+  cmd=""
+  ran=0
+  for i in "$@"; do
+    if [ $ran -eq 0 ]; then
+      ran=1
+      cmd="$i"
+    else
+      $1 $i
+    fi
   done
 }
