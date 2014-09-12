@@ -5,7 +5,7 @@ function pushj {
 }
 
 function upload {
-  if [ ! -f "$1" ]; then
+  if [ ! -f "$1"  -a  ! -d "$1" ]; then
     return 1
   fi
   if [ "$2" != "" ]; then
