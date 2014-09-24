@@ -10,4 +10,4 @@ alias ciod='cabal install --only-dependencies'
 alias nix-env-git='nix-env -f ~/devel/nixos/nixpkgs/'
 
 # Java annoyances.
-alias sbt8='PATH=/usr/lib/jvm/java-1.8.0-openjdk.x86_64/bin/:$PATH sbt -java-home /usr/lib/jvm/java-1.8.0-openjdk.x86_64/'
+alias sbt8='PATH=/usr/lib/jvm/java-1.8.0-openjdk/bin/:$PATH sbt -java-home /usr/lib/jvm/java-1.8.0-openjdk/'
