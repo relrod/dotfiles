@@ -47,6 +47,15 @@ function ghpages-init {
     fi
 }
 
+function shellcheckurl {
+  url="$1"
+  echo "$url" | grep -sq 'github.com/'
+  if [ $? -eq 0 ]; then
+    url="$(echo "$url" | sed 's/\/blob\//\/raw\//')"
+  fi
+  curl -sL "$url" | shellcheck -
+}
+
 # This lets us do multiple invocations of some single command with different
 # arugments. For example, `cabal` has no way to combine commands, e.g.
 # `cabal clean build`. You end up needing to do `cabal clean && cabal build`.
