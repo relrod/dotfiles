@@ -21,6 +21,29 @@ function parse_git_branch {
   command git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+function colored-battery-status {
+  # This is way faster than cut+sed, though it looks more hideous.
+  acpi="$(acpi -b 2>/dev/null)"
+  if [ $? -ne 0 ]; then
+      return 10
+  fi
+  if [[ "$acpi" == *"Charging"* ]]; then
+      echo -ne "\e[1;33m⚡\e[0m"
+  fi
+  level="${acpi#Battery*,\ }"
+  level="${level%\%*}"
+  if [ $level -gt 60 ]; then
+      echo -ne "\e[0;32m"
+  elif [ $level -gt 40 ]; then
+      echo -ne "\e[0;33m"
+  elif [ $level -gt 20 ]; then
+      echo -ne "\e[0;34m"
+  else
+      echo -ne "\e[0;31m"
+  fi
+  echo -ne "$level\e[0m%"
+}
+
 function ghpages-init {
     if [ "$1" == "" ]; then
         echo "Usage: ghpages-init \$1"
