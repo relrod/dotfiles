@@ -28,20 +28,20 @@ function colored-battery-status {
       return 10
   fi
   if [[ "$acpi" == *"Charging"* ]]; then
-      echo -ne "\e[1;33m⚡\e[0m"
+      echo -ne "\x01\e[1;33m\x02⚡\x01\e[0m\x02"
   fi
   level="${acpi#Battery*,\ }"
   level="${level%\%*}"
   if [ $level -gt 60 ]; then
-      echo -ne "\e[0;32m"
+      echo -ne "\x01\e[0;32m\x02"
   elif [ $level -gt 40 ]; then
-      echo -ne "\e[0;33m"
+      echo -ne "\x01\e[0;33m\x02"
   elif [ $level -gt 20 ]; then
-      echo -ne "\e[0;34m"
+      echo -ne "\x01\e[0;34m\x02"
   else
-      echo -ne "\e[0;31m"
+      echo -ne "\x01\e[0;31m\x02"
   fi
-  echo -ne "$level\e[0m%"
+  echo -ne "$level\x01\e[0m\x02%"
 }
 
 function ghpages-init {
