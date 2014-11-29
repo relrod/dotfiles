@@ -50,7 +50,7 @@ function ghpages-init {
         return 1
     fi
     dir="$(mktemp -d)"
-    git clone "ssh://github.com:$1" "$dir/repo"
+    git clone "ssh://git@github.com/$1" "$dir/repo"
     pushd "$dir/repo"
     git ls-remote | grep gh-pages
     if [ $? == 0 ]; then
