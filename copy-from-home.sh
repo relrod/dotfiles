@@ -2,6 +2,7 @@
 cp -v ~/.Xdefaults .
 cp -v ~/.bashrc .
 cp -rv ~/.shellenv .
+cp -v ~/devel/haskell/haddock-deploy-template.sh .
 
 echo "Staging in git"
 find -name '.*' -a -\! -name '.git' -a -\! -name '.' -print | xargs git add -v
