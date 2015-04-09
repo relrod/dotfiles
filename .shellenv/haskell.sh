@@ -53,3 +53,11 @@ function create-haskell-repo {
     git push -u origin master
     ghpages-init "relrod/$1"
 }
+
+function :t {
+  ghc -e ":t $@"
+}
+
+function :k {
+  ghc -e ":k $@"
+}
