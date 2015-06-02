@@ -114,3 +114,12 @@ function ss {
     fi
   done
 }
+
+function github_clone_trap {
+  if [[ $? == 127 && "$1" =~ ^git@github\.com.* ]]; then
+    read -p "About to clone $1 from github... Continue? [Y/n]" -n 1 -r
+    if [[ "$REPLY" == "" || "$REPLY" =~ ^[Yy]$ ]]; then
+      git clone "$1"
+    fi
+  fi
+}
