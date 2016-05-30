@@ -13,7 +13,7 @@ function upload {
   else
     destination="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$(basename "$1")")"
   fi
-  rsync -q --partial -avzre ssh "$1" elrod.me:/srv/webmount/tmp/"$destination" &&
+  rsync -q --partial --chmod=o+r -avzre ssh "$1" elrod.me:/srv/webmount/tmp/"$destination" &&
     echo "http://tmp.elrod.me/$destination"
 }
 

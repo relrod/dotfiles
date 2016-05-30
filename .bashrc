@@ -3,6 +3,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 source /etc/profile.d/autojump.bash
+source <(pagure --bash-completion-script `which pagure`)
 
 # This is where pretty much all aliases/functions come from.
 for file in ~/.shellenv/*.sh; do source $file; done
