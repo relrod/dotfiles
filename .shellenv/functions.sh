@@ -115,6 +115,35 @@ function ss {
   done
 }
 
+# Download a paper from the ACM DL via the YSU gemini server.
+# (or whatever $CAMPUS_SERVER is set to below)
+function acmpaper {
+  CAMPUS_SERVER="gemini.csis.ysu.edu"
+
+  if [ "$1" == "" ]; then
+    echo "Usage: acmpaper https://dl.acm.org/..."
+    return 1
+  fi
+
+  src="$(curl -s "$1")"
+  title="$(echo "$src" | grep '<title>' | sed -r 's/^<title>([^<]+).+$/\1/')"
+  pdfurl="$(echo "$src" | grep 'citation_pdf_url' \
+                        | sed 's/.*citation_pdf_url" content="//g' \
+                        | sed 's/".*//g' \
+                        | sed 's/http:/https:/')"
+  cmd="curl -Lo \"$title.pdf\" \"$pdfurl\""
+  echo "$cmd"
+  ssh "$CAMPUS_SERVER" "$cmd"
+  if [ $? -ne 0 ]; then
+    echo "Something went wrong when trying to download the PDF."
+    echo "Examine the above output and retry."
+    return 1
+  fi
+  # Otherwise if ssh returns successfully, copy the file and rm the source.
+  scp "$CAMPUS_SERVER:\"$title.pdf\"" .
+  ssh "$CAMPUS_SERVER" "rm \"$title.pdf\""
+}
+
 function github_clone_trap {
   if [[ $? == 127 && "$1" =~ ^git@github\.com.* ]]; then
     read -p "About to clone $1 from github... Continue? [Y/n]" -n 1 -r
