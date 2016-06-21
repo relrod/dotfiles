@@ -152,3 +152,20 @@ function github_clone_trap {
     fi
   fi
 }
+
+function git-clone-org {
+  f="$(curl -s "https://api.github.com/orgs/$1/repos?per_page=200" | jq '.[] .name')"
+  for repo in $f; do
+    repo="$(echo "$repo" | sed 's/"//g')"
+    fullrepo="$1/$repo"
+    if [ ! -d "$repo" ]; then
+      echo ">> $repo <<"
+      # this assumes `hub` is installed.
+      git clone "$fullrepo"
+    else
+      pushd "$repo"
+      git pull
+      popd
+    fi
+  done
+}
