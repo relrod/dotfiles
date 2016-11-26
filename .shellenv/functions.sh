@@ -14,7 +14,7 @@ function upload {
     destination="$(perl -MURI::Escape -e 'print uri_escape($ARGV[0]);' "$(basename "$1")")"
   fi
   rsync -q --partial --chmod=o+r -avzre ssh "$1" elrod.me:/srv/webmount/tmp/"$destination" &&
-    echo "http://tmp.elrod.me/$destination"
+    echo "https://tmp.elrod.me/$destination"
 }
 
 function parse_git_branch {

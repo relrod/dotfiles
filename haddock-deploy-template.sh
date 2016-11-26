@@ -17,7 +17,7 @@ popd
 rm -rf "$f"
 
 if [ $? == 0 ]; then
-  echo "*** Done: http://relrod.github.io/{{NAME}}/"
+  echo "*** Done: https://relrod.github.io/{{NAME}}/"
   exit 0
 else
   echo "*** ERROR!!! Fix the above and try again."
