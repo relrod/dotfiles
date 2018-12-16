@@ -6,6 +6,10 @@ alias getsources='spectool -g -A'
 alias mypkgs="pkgdb-cli list --user $FAS_USERNAME"
 alias pingallproxies='fping proxy01.fedoraproject.org proxy02.fedoraproject.org proxy03.fedoraproject.org proxy04.fedoraproject.org proxy05.fedoraproject.org proxy06.fedoraproject.org proxy07.fedoraproject.org proxy08.fedoraproject.org proxy09.fedoraproject.org'
 
+function sphx {
+  ssh $1.phx2.fedoraproject.org
+}
+
 function peoplepackage {
   ssh fedorapeople.org "mkdir public_html/packages/$1"
   if ls "$1"*".src.rpm" &> /dev/null && ls "$1"*".spec" &> /dev/null; then

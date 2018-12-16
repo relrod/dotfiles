@@ -125,13 +125,14 @@ function acmpaper {
     return 1
   fi
 
-  src="$(curl -s "$1")"
+  ua="Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:63.0) Gecko/20100101 Firefox/63.0"
+  src="$(curl -A "$ua" -s "$1")"
   title="$(echo "$src" | grep '<title>' | sed -r 's/^<title>([^<]+).+$/\1/')"
   pdfurl="$(echo "$src" | grep 'citation_pdf_url' \
                         | sed 's/.*citation_pdf_url" content="//g' \
                         | sed 's/".*//g' \
                         | sed 's/http:/https:/')"
-  cmd="curl -Lo \"$title.pdf\" \"$pdfurl\""
+  cmd="curl -A \"$ua\" -Lo \"$title.pdf\" \"$pdfurl\""
   echo "$cmd"
   ssh "$CAMPUS_SERVER" "$cmd"
   if [ $? -ne 0 ]; then
